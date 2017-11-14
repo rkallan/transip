@@ -1,6 +1,6 @@
 {
   "name": "json-server",
-  "version": "0.12.1",
+  "version": "1.0",
   "description": "Serves JSON files through REST routes.",
   "main": "./lib/server/index.js",
   "bin": "./bin/index.js",
@@ -72,7 +72,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/typicode/json-server.git"
+    "url": ""
   },
   "keywords": [
     "JSON",
@@ -90,12 +90,12 @@
     "dummy",
     "sandbox"
   ],
-  "author": "Typicode <typicode@gmail.com>",
+  "author": "RR Kallan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/typicode/json-server/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/typicode/json-server",
+  "homepage": "",
   "engines": {
     "node": ">=4"
   }

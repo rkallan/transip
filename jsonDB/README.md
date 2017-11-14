@@ -1,72 +1,3 @@
-# JSON Server [![](https://travis-ci.org/typicode/json-server.svg?branch=master)](https://travis-ci.org/typicode/json-server) [![](https://badge.fury.io/js/json-server.svg)](http://badge.fury.io/js/json-server) [![](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/typicode/json-server?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-Get a full fake REST API with __zero coding__ in __less than 30 seconds__ (seriously)
-
-Created with <3 for front-end developers who need a quick back-end for prototyping and mocking.
-
-* [Egghead.io free video tutorial - Creating demo APIs with json-server](https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server)
-* [JSONPlaceholder - Live running version](http://jsonplaceholder.typicode.com)
-
-See also:
-* :dog: [husky - Git hooks made easy](https://github.com/typicode/husky)
-* :hotel: [hotel - developer tool with local .dev domain and https out of the box](https://github.com/typicode/hotel)
-* :atom_symbol: [react-fake-props - generate fake props for your React tests (Jest, Enzyme, ...)](https://github.com/typicode/react-fake-props)
-* :heartpulse: [Patreon page - if you want to support JSON Server or my other projects](https://www.patreon.com/typicode)
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/6WUB3WBwbmZXbZxzrUv5y2A5/typicode/json-server'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/6WUB3WBwbmZXbZxzrUv5y2A5/typicode/json-server.svg' />
-</a>
-
-## Table of contents
-
-<details>
-
-<!-- toc -->
-
-- [Sponsorship](#sponsorship)
-- [Example](#example)
-- [Install](#install)
-- [Routes](#routes)
-  * [Plural routes](#plural-routes)
-  * [Singular routes](#singular-routes)
-  * [Filter](#filter)
-  * [Paginate](#paginate)
-  * [Sort](#sort)
-  * [Slice](#slice)
-  * [Operators](#operators)
-  * [Full-text search](#full-text-search)
-  * [Relationships](#relationships)
-  * [Database](#database)
-  * [Homepage](#homepage)
-- [Extras](#extras)
-  * [Static file server](#static-file-server)
-  * [Alternative port](#alternative-port)
-  * [Access from anywhere](#access-from-anywhere)
-  * [Remote schema](#remote-schema)
-  * [Generate random data](#generate-random-data)
-  * [HTTPS](#https)
-  * [Add custom routes](#add-custom-routes)
-  * [Add middlewares](#add-middlewares)
-  * [CLI usage](#cli-usage)
-  * [Module](#module)
-    + [Simple example](#simple-example)
-    + [Custom routes example](#custom-routes-example)
-    + [Access control example](#access-control-example)
-    + [Custom output example](#custom-output-example)
-    + [Rewriter example](#rewriter-example)
-    + [Mounting JSON Server on another endpoint example](#mounting-json-server-on-another-endpoint-example)
-    + [API](#api)
-  * [Deployment](#deployment)
-- [Links](#links)
-  * [Video](#video)
-  * [Articles](#articles)
-  * [Third-party tools](#third-party-tools)
-- [License](#license)
-
-<!-- tocstop -->
-
-</details>
-
 ## Example
 
 Create a `db.json` file
@@ -181,8 +112,6 @@ GET /posts/1/comments?_start=20&_end=30
 GET /posts/1/comments?_start=20&_limit=10
 ```
 
-_Works exactly as [Array.slice](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) (i.e. `_start` is inclusive and `_end` exclusive)_
-
 ### Operators
 
 Add `_gte` or `_lte` for getting a range
@@ -227,7 +156,6 @@ GET /comments?_expand=post
 GET /comments/1?_expand=post
 ```
 
-To get or create nested resources (by default one level, [add custom routes](#add-custom-routes) for more)
 
 ```
 GET  /posts/1/comments
@@ -275,7 +203,7 @@ $ json-server --watch db.json --port 3004
 
 ### Access from anywhere
 
-You can access your fake API from anywhere using CORS and JSONP.
+You can access the fake API from anywhere using CORS and JSONP.
 
 ### Remote schema
 
@@ -305,8 +233,6 @@ module.exports = () => {
 ```bash
 $ json-server index.js
 ```
-
-__Tip__ use modules like [Faker](https://github.com/Marak/faker.js), [Casual](https://github.com/boo1ean/casual), [Chance](https://github.com/victorquinn/chancejs) or [JSON Schema Faker](https://github.com/json-schema-faker/json-schema-faker).
 
 ### HTTPS
 
@@ -560,34 +486,3 @@ Returns middlewares used by JSON Server.
 __`jsonServer.router([path|object])`__
 
 Returns JSON Server router. 
-
-### Deployment
-
-You can deploy JSON Server. For example, [JSONPlaceholder](http://jsonplaceholder.typicode.com) is an online fake API powered by JSON Server and running on Heroku.
-
-## Links
-
-### Video
-
-* [Creating Demo APIs with json-server on egghead.io](https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server)
-
-### Articles
-
-* [Node Module Of The Week - json-server](http://nmotw.in/json-server/)
-* [Mock up your REST API with JSON Server](http://www.betterpixels.co.uk/projects/2015/05/09/mock-up-your-rest-api-with-json-server/)
-* [ng-admin: Add an AngularJS admin GUI to any RESTful API](http://marmelab.com/blog/2014/09/15/easy-backend-for-your-restful-api.html)
-* [Fast prototyping using Restangular and Json-server](http://glebbahmutov.com/blog/fast-prototyping-using-restangular-and-json-server/)
-* [Create a Mock REST API in Seconds for Prototyping your Frontend](https://coligo.io/create-mock-rest-api-with-json-server/)
-* [No API? No Problem! Rapid Development via Mock APIs](https://medium.com/@housecor/rapid-development-via-mock-apis-e559087be066#.93d7w8oro)
-
-### Third-party tools
-
-* [Grunt JSON Server](https://github.com/tfiwm/grunt-json-server)
-* [Docker JSON Server](https://github.com/clue/docker-json-server)
-* [JSON Server GUI](https://github.com/naholyr/json-server-gui)
-* [JSON file generator](https://github.com/dfsq/json-server-init)
-* [JSON Server extension](https://github.com/maty21/json-server-extension)
-
-## License
-
-MIT - [Typicode](https://github.com/typicode) - [Patreon](https://www.patreon.com/typicode)
