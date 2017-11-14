@@ -1,0 +1,27 @@
+<article class="container" variant="custom-form">
+
+    <section class="unit" variant="custom-form-posted" state="hidden">
+        <p>			@include setPropWithRemAndPx(30, (padding-left: 30, background-size: 24, margin-bottom: map-get($grid, gutter)/2, font-size: $bodyTextFontSize, line-height: 24));
+            @include background-image('icons/error');
+            @include transition(opacity 0.6s linear 0s, height 0.4s, overflow 0.5s);</p>
+    </section>
+    <form class="form" action="http://localhost:3000/html/test.html" method="POST" state="active" name="newsletter" novalidate>
+        <section class="unit" variant="error-message" state="hidden">
+            <p>U heeft geen juist emailadres ingevuld.</p>
+        </section>
+        <section class="unit">
+            <div class="form-label">
+                <label for="email">Emailadres</label>
+            </div>
+            <div class="form-input">
+                <input class="input" id="email" variant="email" type="email" name="email" placeholder="E-mail address*" data-required="true" state />
+            </div>
+        </section>
+
+        <section class="unit">
+            <button type="submit" class="submit-button" id="button-submit" variant="color-blue">
+                <span class="multiplelines">Inschrijven</span>
+            </button>
+        </section>
+    </form>
+</article>

@@ -1,0 +1,35 @@
+<article class="container" variant="api-form">
+    <section class="unit" variant="custom-form-posted" state="hidden">
+        <p>Bedankt het formulier is correct verzonden</p>
+    </section>
+
+    <form class="form" action="http://localhost:3000/posts" method="POST" state="active" name="form" novalidate>
+        <section class="unit" variant="error-message" state="hidden">
+            <p>U heeft geen juist emailadres ingevuld.</p>
+        </section>
+
+        <section class="unit">
+            <div class="form-label">
+                <label for="company">Bedrijf</label>
+            </div>
+            <div class="form-input">
+                <input class="input" variant="text" type="text" name="title" />
+            </div>
+        </section>
+        <section class="unit">
+            <div class="form-label">
+                <label for="name">Naam</label>
+            </div>
+            <div class="form-input">
+                <input class="input" variant="text" type="text" name="author"  />
+            </div>
+        </section>
+
+
+        <section class="unit">
+            <button type="submit" class="submit-button" id="button-submit" variant="color-blue">
+                <span class="multiplelines">data toevoegen</span>
+            </button>
+        </section>
+    </form>
+</article>

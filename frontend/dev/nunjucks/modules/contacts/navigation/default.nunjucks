@@ -1,0 +1,20 @@
+<nav class="container navigation" variant="navigation">
+  <ul class="navigation unit">
+    <li>
+      <a href="#" variant="is-active">
+        <i class="icon">
+            {% include "modules/contacts/svg/icon-contact.svg" %}
+        </i>
+        <span>all contacts</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <i class="icon">
+            {% include "modules/contacts/svg/icon-favorites.svg" %}
+        </i>
+        <span>favorites</span>
+      </a>
+    </li>
+  </ul>
+</nav>

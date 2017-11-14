@@ -1,0 +1,29 @@
+<div class="contact-list-items container" variant="contact-list-items">
+  <div class="contact-list-search container" variant="contact-list-search">
+    <form class="contact-list-search unit" role="search">
+        <div class="custom-input container">
+          <div class="custom-input unit" variant="input-search">
+            <input class="input search" type="search" id="mySearch" name="q"
+            placeholder="Search..."
+            aria-label="Search through saved contacts">
+          </div>
+        </div>
+    </form>
+  </div>
+  <article class="contact-list-items unit">
+    <div>Contacts are loading ...</div>
+  </article>
+
+  <article class="contact-button container" variant="contact-button">
+    <ul class="contact-button unit">
+      <li>
+          <a href="#">
+            <i class="icon">
+                {% include "modules/contacts/svg/icon-add.svg" %}
+            </i>
+            <span>icon-add contact</span>
+          </a>
+      </li>
+    </ul>
+  </article>
+</div>

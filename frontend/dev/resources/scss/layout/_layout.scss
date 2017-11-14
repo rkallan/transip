@@ -1,0 +1,66 @@
+html {
+  font-family: $fontFamily;
+  font-size: 100%;
+  line-height: 1.5;
+  color: $color-black;
+  &[variant~="no-scroll"] {
+    overflow: hidden;
+  }
+}
+
+body {
+  @include setPropWithRemAndPx($bodyTextFontSize, font-size);
+  line-height: 1.25;
+  &[accessibility*="mouse"] {
+     :focus {
+      outline: 0
+    }
+  }
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  @include setPropWithRemAndPx(map-get($grid, gutter), margin-bottom);
+  @extend %clearfix;
+  &[variant~='content'] {
+    .unit {
+      &.row {
+        box-sizing: border-box;
+        @include setPropWithRemAndPx(map-get($grid, gutter), (padding-left, padding-right));
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.row {
+  .col {
+    &[variant~='pos-right'] {
+      float: right;
+    }
+  }
+}
+
+[state*="hidden"] {
+  @include opacity(0);
+  @extend %visuallyhidden;
+}
+
+[state*="active"] {
+  @include opacity(1);
+  @extend %visuallyShow;
+}
+
+label {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}

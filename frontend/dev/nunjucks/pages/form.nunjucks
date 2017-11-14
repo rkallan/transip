@@ -1,0 +1,17 @@
+{% extends "layout/layout/default.nunjucks" %}
+
+{% block main %}
+    <main class="container" variant="main">
+
+        {% include "modules/banner/default.nunjucks" %}
+
+        <div class="container" variant="content">
+            <div class="unit row">
+                <article class="col" variant="col-desktop-6-12">
+                    {% include "modules/custom-form/default.nunjucks" %}
+                </article>
+            </div>
+        </div>
+
+    </main>
+{% endblock %}

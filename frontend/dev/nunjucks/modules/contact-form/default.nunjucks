@@ -1,0 +1,74 @@
+<article class="container" variant="api-form">
+    <section class="unit" variant="custom-form-posted" state="hidden">
+        <p>Bedankt het formulier is correct verzonden</p>
+    </section>
+
+    <form class="form" action="http://localhost:3000/posts" method="POST" state="active" name="form" novalidate>
+        <section class="unit" variant="error-message" state="hidden">
+            <p>U heeft geen juist emailadres ingevuld.</p>
+        </section>
+
+        <section class="unit">
+            <div class="form-input">
+                <input class="input" variant="text" type="text" name="firstname" placeholder="First name" />
+            </div>
+            <div class="form-input">
+                <input class="input" variant="text" type="text" name="lastname" placeholder="Last name" />
+            </div>
+        </section>
+
+        
+        <section class="unit">
+            <div class="form-input">
+                <input class="input" variant="text" type="tel" name="phoneWork" placeholder="Phonenumber work" />
+            </div>
+            <div class="form-input">
+                <input class="input" variant="text" type="tel" name="phonePrivate" placeholder="Phonenumber private" />
+            </div>
+        </section>
+                
+        <section class="unit">
+            <div class="form-input">
+                <textarea class="textarea" name="adres" placeholder="Home adress"></textarea>
+            </div>
+        </section>
+
+        <section class="unit">
+            <div class="file-upload container" variant="file-upload">
+                <div class="file-upload unit">
+                    <div class="file-preview container" variant="file-preview"></div>
+                </div>
+                <div class="file-upload unit">
+                    <a class="erase-file-upload">
+                        Remove image from upload
+                    </a>
+                </div>
+                <div class="file-upload unit">
+                    <label class="input upload-field">
+                        <input type="file" name="avatar" accept="image/*" multiple />
+                        <input type="text" name="file" />
+                        <span class="upload-field-control"></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+                        
+        <section class="unit">
+            <div class="form-input">
+                <textarea class="textarea" name="note"></textarea>
+            </div>
+        </section>
+                        
+        <section class="unit">
+            <div class="form-input">
+                <input class="checkBox favorite" name="favorite" type="checkbox">
+            </div>
+        </section>
+
+        <section class="unit">
+            <button type="submit" class="submit-button" id="button-submit">
+                <span class="multiplelines">data toevoegen</span>
+            </button>
+        </section>
+    </form>
+</article>

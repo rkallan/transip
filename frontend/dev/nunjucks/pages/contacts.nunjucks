@@ -1,0 +1,12 @@
+{% extends "layout/layout/contacts.nunjucks" %}
+
+{% block main %}
+    <main class="container contacts" variant="main contacts" role="main">
+      {% include "modules/contacts/navigation/default.nunjucks" %}
+
+      {% include "modules/contacts/contact-list/default.nunjucks" %}
+
+      <article class="contact-item wrapper" variant="contact-item"></div>
+
+    </main>
+{% endblock %}

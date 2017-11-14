@@ -1,0 +1,20 @@
+{% extends "layout/layout/default.nunjucks" %}
+
+{% block main %}
+    <main class="container" variant="main" style="background-color: red;">
+
+    {% for i in range(1, 13) %}
+       {% set prev = '' %}
+
+      {% if i < 10 %}
+        {% set prev = 0 %}
+      {% endif %}
+
+      <div style="background-color: red;">
+        <span>{{ i }}</span>
+        <img src="../resources/images/icons/icons-{{prev}}{{i}}.svg" width="50" />
+      </div>
+    {% endfor %}
+
+    </main>
+{% endblock %}
