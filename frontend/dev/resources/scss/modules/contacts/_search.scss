@@ -1,0 +1,12 @@
+.contact-list-search {
+  &.container {
+    position: fixed;
+    width: 0;
+    top: 0;
+    left: 0;
+    @include setPropWithRemAndPx(225, left);
+    z-index: 10;
+    background-color: $color-white;
+  }
+  &.unit {}
+}

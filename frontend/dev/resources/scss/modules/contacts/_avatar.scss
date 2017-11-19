@@ -1,0 +1,67 @@
+.contact-avatar {
+  &.container {
+    @include setPropWithRemAndPx(150, (width: 150, height: 175));
+    margin: 0;
+    label {
+      display: block;
+      .image {
+        transition: all 0.3s ease;
+      }
+      &:hover,
+      &:focus {
+        .image {
+          filter: grayscale(100%);
+          transform: scale(0.8);
+        }
+      }
+    }
+    .avatar-image {
+      max-width: 100%;
+      border-radius: 100%;
+      filter: grayscale(10%);
+      background-color: darken($color-gray-lighter, 20%);
+    }
+    .caption {
+      @include setPropWithRemAndPx(14, (font-size: 14, margin-top: 5));
+      font-style: italic;
+      text-align: center;
+    }
+  }
+  &.unit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include setPropWithRemAndPx(150, (width: 150, height: 150));
+  }
+}
+
+fieldset {
+  &[disabled] {
+    label {
+      cursor: default;
+    }
+    .contact-avatar {
+      &.container {
+        label {
+          &:hover,
+          &:focus {
+            .image {
+              filter: grayscale(0);
+              transform: scale(1);
+              cursor: default;
+            }
+          }
+        }
+        .caption {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+input[type="file"]:focus~label .image {
+  filter: grayscale(100%);
+  transform: scale(0.8);
+}

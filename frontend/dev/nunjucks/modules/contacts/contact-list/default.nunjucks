@@ -10,19 +10,17 @@
         </div>
     </form>
   </div>
-  <article class="contact-list-items unit">
-    <div>Contacts are loading ...</div>
-  </article>
+  <article class="contact-list-items unit"></article>
 
   <article class="contact-button container" variant="contact-button">
     <ul class="contact-button unit">
-      <li>
-          <a href="#">
+      <li class="flex-auto">
+          <button class=" button-add" type="button">
             <i class="icon">
                 {% include "modules/contacts/svg/icon-add.svg" %}
             </i>
             <span>icon-add contact</span>
-          </a>
+          </button>
       </li>
     </ul>
   </article>

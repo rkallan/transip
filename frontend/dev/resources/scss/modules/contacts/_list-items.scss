@@ -1,0 +1,25 @@
+.contact-list-items {
+  &.container {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    .contact-button {
+      &[variant~="contact-button"] {
+        position: fixed;
+        @include setPropWithRemAndPx(225, left);
+        width: 0;
+        transition: all 0.1s ease;
+      }
+    }
+  }
+  &.unit {
+    position: fixed;
+    height: 100%;
+    @include setPropWithRemAndPx(60, (padding-top: 60, padding-bottom: 130, left: 225));
+    top: 0;
+    overflow: auto;
+    overflow-x: hidden;
+    z-index: 5;
+  }
+}

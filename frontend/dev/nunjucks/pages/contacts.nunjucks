@@ -6,7 +6,7 @@
 
       {% include "modules/contacts/contact-list/default.nunjucks" %}
 
-      <article class="contact-item wrapper" variant="contact-item"></div>
+      {% include "modules/contacts/contact-item/default.nunjucks" %}
 
     </main>
 {% endblock %}

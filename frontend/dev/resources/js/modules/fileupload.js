@@ -9,7 +9,7 @@ modules["file-upload"] = (function() {
   methods = {};
   selectors = {
     viewport: "body",
-    container: '.container[variant="file-upload"]',
+    container: '[variant="file-upload"]',
   };
   state = {};
 
@@ -31,6 +31,7 @@ modules["file-upload"] = (function() {
 
   methods.init = function(viewport) {
     if (elements.fileUploadContainer) {
+      console.log("joeka");
       Object.keys(elements.fileUploadContainer).forEach(function(key) {
         let fileUpload = new fileUploadShowPrevieuw(
           elements.fileUploadContainer[key]

@@ -25,6 +25,26 @@
             </div>
         </section>
 
+        <section class="unit">
+
+        <p>
+        <input type="checkbox" id="test1" />
+        <label for="test1">Red</label>
+        </p>
+        <p>
+        <input type="checkbox" id="test2" checked="checked" />
+        <label for="test2">Yellow</label>
+        </p>
+        <p>
+        <input type="checkbox" id="test3" checked="checked" disabled="disabled" />
+        <label for="test3">Green</label>
+        </p>
+        <p>
+            <input type="checkbox" id="test4" disabled="disabled" />
+            <label for="test4">Brown</label>
+        </p>
+
+        </section>
 
         <section class="unit">
             <button type="submit" class="submit-button" id="button-submit" variant="color-blue">
