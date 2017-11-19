@@ -150,7 +150,6 @@ modules['custom-form'] = (function () {
 				methods.form.errorHandler(data.errorData, form);
 			} else if (data.succesData) {
 				if (data.succesData.page !== '') {
-					console.log('we go to a new page');
 					// go to new page
 				} else {
 					methods.form.succesHandler(data);
@@ -247,7 +246,6 @@ modules['custom-form'] = (function () {
 			};
 
 			formData.postData = Array.prototype.slice.call(form.elements).reduce(function (data, item) {
-				console.log(data)
 				if (item && item.name) {
 					if (!data[item.name]) {
 						data[item.name] = {
