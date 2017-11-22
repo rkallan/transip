@@ -1,0 +1,12 @@
+// Accepts `s`, `m`, `l`, or `xl`
+@function rhythm-shift($size-name) {
+  $font-size: map-get($font-sizes, $size-name);
+  $cap-height: map-get($cap-heights, $size-name);
+  $offset: ($line-height - $cap-height * $font-size) / 2;
+  @return round($offset);
+}
+
+$offset-s: rhythm-shift(s);
+$offset-m: rhythm-shift(m);
+$offset-l: rhythm-shift(l);
+$offset-xl: rhythm-shift(xl);

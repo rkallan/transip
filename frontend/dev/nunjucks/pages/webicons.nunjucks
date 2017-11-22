@@ -1,0 +1,9 @@
+{% extends "layout/layout/default-2.nunjucks" %}
+
+{% block main %}
+    <main class="container web-icons" variant="main web-icons" role="main">
+    <div class="typeset">
+      <p>lorem ipsum dolar</p>
+    </div>
+</main>
+{% endblock %}
