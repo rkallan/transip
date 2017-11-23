@@ -4,9 +4,11 @@
     width: 0;
     top: 0;
     left: 0;
-    @include setPropWithRemAndPx(225, left);
     z-index: 10;
     background-color: $color-white;
+    @include addBreakpointFor(tablet-large) {
+      @include setPropWithRemAndPx(130, left);
+    }
   }
   &.unit {}
 }

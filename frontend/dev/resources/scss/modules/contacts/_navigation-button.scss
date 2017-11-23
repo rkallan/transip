@@ -5,10 +5,37 @@
       right: 0;
       bottom: 0;
       width: 0;
-      @include setPropWithRemAndPx(130, (height));
+      @include setPropWithRemAndPx($buttonContainerContact, (height));
       z-index: 10;
       background-color: $color-gray-darker;
       margin: 0;
+    }
+  }
+  &[variant~="button-back"] {
+    &.container {
+      top: 0;
+      bottom: unset;
+      width: 0;
+      @include setPropWithRemAndPx($buttonContainerBackContact, (height));
+      .unit {
+        flex-direction: row;
+        li {
+          a,
+          button {
+            flex-direction: row;
+            .icon {
+              margin-bottom: 0;
+              svg {
+                transform: rotate(180deg);
+                path, rect {
+                  fill: $color-white;
+                }
+              }
+            }
+          }
+          
+        }
+      }
     }
   }
   &.unit {
@@ -21,16 +48,18 @@
     transition: all 0.3s ease;
     li {
       height: 100%;
+      @include setPropWithRemAndPx(130, (max-width)); 
       &.flex-auto {
         flex: auto;
+        max-width: unset;
       }
       a,
       button {
+        @include setPropWithRemAndPx(18, (font-size));
         display: flex;
         flex-flow: column wrap;
         justify-content: center;
         align-content: center;
-        font-size: 21px;
         align-items: center;
         text-align: center;
         height: 100%;
@@ -39,6 +68,7 @@
         transition: all 0.3s ease;
         border: 0;
         background: transparent;
+        font-family: $fontFamily;
         .icon {
           transition: all 0.3s ease;
           text-align: center;

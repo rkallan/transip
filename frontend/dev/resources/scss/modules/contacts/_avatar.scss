@@ -1,6 +1,6 @@
 .contact-avatar {
   &.container {
-    @include setPropWithRemAndPx(150, (width: 150, height: 175));
+    @include setPropWithRemAndPx(80, (width: 80, height: 80));
     margin: 0;
     label {
       display: block;
@@ -22,9 +22,10 @@
       background-color: darken($color-gray-lighter, 20%);
     }
     .caption {
-      @include setPropWithRemAndPx(14, (font-size: 14, margin-top: 5));
+      @include setPropWithRemAndPx(14, (font-size: 14, margin-top: 5, height: 35));
       font-style: italic;
       text-align: center;
+      overflow: hidden;
     }
   }
   &.unit {
@@ -32,7 +33,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    @include setPropWithRemAndPx(150, (width: 150, height: 150));
+    @include setPropWithRemAndPx(150, (width: 80, height: 80));
   }
 }
 

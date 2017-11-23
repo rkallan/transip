@@ -1,4 +1,9 @@
 {
-    "eslint.enable": false,
-    "jshint.enable": false
+  "eslint.enable": false,
+  "jshint.enable": false,
+  "files.autoSave": "off",
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.formatOnPaste": true
 }

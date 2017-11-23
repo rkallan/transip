@@ -12,7 +12,6 @@ html {
 }
 
 body {
-  @include setPropWithRemAndPx($bodyTextFontSize, font-size);
   line-height: 1.25;
   &[accessibility*="mouse"] {
      :focus {

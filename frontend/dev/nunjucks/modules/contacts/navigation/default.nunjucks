@@ -1,7 +1,7 @@
 <nav class="container navigation" variant="navigation">
   <ul class="navigation unit">
     <li>
-      <a href="#" variant="is-active">
+      <a href="?show=all" variant="is-active">
         <i class="icon">
             {% include "modules/contacts/svg/icon-contact.svg" %}
         </i>
@@ -9,7 +9,7 @@
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="?show=favorites">
         <i class="icon">
             {% include "modules/contacts/svg/icon-favorites.svg" %}
         </i>

@@ -48,20 +48,20 @@
     }
   }
   &[variant~="contact-label"] {
-    @include setPropWithRemAndPx(120, (min-width, max-width, width));
-    @include setPropWithRemAndPx(10, margin-right);
+    @include setPropWithRemAndPx(70, (min-width, max-width, width));
+
     margin-bottom: 0;
     label {
       display: block;
       font-family: $fontFamily;
-      @include setPropWithRemAndPx(18, (font-size: 18, padding-top: 4));
+      @include setPropWithRemAndPx(18, (font-size: 14, margin-top: 1));
       text-align: right;
       color: darken( $color-gray-lighter, 20%);
     }
   }
   &[variant~="textarea"] {
     align-self: flex-start;
-    @include setPropWithRemAndPx(10, margin-top);
+    @include setPropWithRemAndPx(6, margin-top);
     label {
       padding-top: 0;
     }
@@ -74,7 +74,7 @@
       border: 0;
       width: 100%;
       color: $color-gray-darker;
-      @include setPropWithRemAndPx(10, (padding-top: 5, padding-bottom: 5, padding-left: 10, padding-right: 10, font-size: 24));
+      @include setPropWithRemAndPx(10, (padding-top: 5, padding-bottom: 5, padding-left: 10, padding-right: 10, font-size: 16));
       background: transparent;
       margin: 0;
       vertical-align: top;
@@ -85,8 +85,21 @@
         opacity: 1;
         text-align: left;
       }
+      &:focus {
+        @include setPropWithRemAndPx(13, margin-left);
+        font-weight: 700;
+        transform: scale(1.2);
+        width: calc(100%/1.2);
+        outline: 0;
+      }
       &.textarea {
-        color: darken( $color-gray-lighter, 20%);
+        color: $color-gray-darker;
+        font-family: $fontFamily;
+        &:focus {
+          transform: scale(1);
+          margin-top: 0;
+          margin-left: 0;
+        }
       }
     }
   }
@@ -178,6 +191,22 @@
 .fav-checkbox[type="checkbox"]:hover+label .icon,
 .fav-checkbox[type="checkbox"]:focus+label .icon {
   transform: scale(1.25);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 0;
+  -webkit-text-fill-color: $color-gray-darker;
+  -webkit-box-shadow: 0 0 0 1000px $color-gray-darker inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 fieldset {

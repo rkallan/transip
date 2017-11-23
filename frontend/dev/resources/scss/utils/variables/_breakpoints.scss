@@ -1,1 +1,8 @@
-$breakpoints: ( mobile: ( min-width: null, max-width: calculateRem(320px)), tablet: ( min-width: null, max-width: calculateRem(640px)), desktop-small: ( min-width: null, max-width: calculateRem(920px)), desktop: ( min-width: null, max-width: calculateRem(1200px)), desktop-large: ( min-width: calculateRem(1400px), max-width: null))
+$breakpoints: (
+  mobile: ( min-width: null, max-width: calculateRem(320px)),
+  tablet: ( min-width: calculateRem(640px), max-width: null),
+  tablet-large: (min-width: calculateRem(768px), max-width: null),
+  desktop-small: ( min-width: calculateRem(960px), max-width: null),
+  desktop: ( min-width: calculateRem(1280px), max-width: null),
+  desktop-large: ( min-width: calculateRem(1400px), max-width: null)
+)

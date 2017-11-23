@@ -5,6 +5,7 @@
     }
   }
   &.container {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -12,6 +13,7 @@
     margin: 0;
     border: 0;
     background: transparent;
+    font-family: $fontFamily;
     &:hover,
     &:focus {
       .unit {
@@ -20,7 +22,7 @@
         }
         &[variant~="contact-item-avatar"] {
           .image {
-            transform: scale(1.3);
+            transform: scale(1.2);
           }
         }
       }
@@ -29,7 +31,7 @@
   &.unit {
     @include setPropWithRemAndPx(10, margin);
     &[variant~="contact-item-avatar"] {
-      @include setPropWithRemAndPx(80, (min-width, max-width, min-height, max-height));
+      @include setPropWithRemAndPx(40, (min-width, max-width, min-height, max-height));
       .image {
         border-radius: 100%;
         overflow: hidden;
@@ -40,18 +42,36 @@
       }
     }
     &[variant~="contact-item-name"] {
+      position: relative;
       flex: auto;
       text-align: left;
-      @include setPropWithRemAndPx(22, font-size);
+      margin: 0;
+      @include setPropWithRemAndPx(16, (font-size: 16, margin-right: 46));
       color: $color-gray-darker;
+      &::before {
+        display:block;
+        content:attr(data-title);
+        font-weight:bold;
+        color:transparent;
+        overflow:hidden;
+        visibility:hidden;
+      }
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     }
     &[variant~="contact-item-favorite"] {
-      @include setPropWithRemAndPx(30, (width, height));
+      position: absolute;
+      @include setPropWithRemAndPx(10, right);
+      @include setPropWithRemAndPx(26, (width, height));
+      margin: 0;
       .icon {
         display: block;
         transition: all 0.3s ease;
         text-align: center;
-        @include setPropWithRemAndPx(30, (width, height));
+        @include setPropWithRemAndPx(26, (width, height));
         svg {
           width: 100%;
           height: 100%;
