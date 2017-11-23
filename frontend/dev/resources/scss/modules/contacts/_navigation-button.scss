@@ -74,7 +74,6 @@
           text-align: center;
           width: 40px;
           height: 40px;
-          @include setPropWithRemAndPx(map-get($grid, gutter) / 2, margin-bottom);
           @include setPropWithRemAndPx(map-get($grid, gutter), margin-bottom);
           @include setPropWithRemAndPx(40, (width, height));
           svg {

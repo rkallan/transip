@@ -23,14 +23,33 @@ modules["contacts"] = (function () {
   contactItems = {};
 
   methods.data = {
-    getContactsFromApi: function () {
-      let favorites = window.location.search.split('=')[1];
-      let url = 'http://localhost:3000/posts?_sort=firstname,lastname&_order=asc,asc';
-      if (favorites === 'favorites') {
-        url = url + "&favorites=true";
+    getDefaultParamsForApi() {
+      const defaultParams = {
+        "_sort": "firstname,lastname",
+        "_order": "asc,asc"
       }
+      return defaultParams;
+    },
+    getApiUrl: function (searchParam = {}) {
+      const apiUrl = 'http://localhost:3000/posts';
+      const urlGetParams = modules["general"].getUrlParams();
+      const defaultParams = methods.data.getDefaultParamsForApi();
+      const urlParamsObject = Object.assign({}, defaultParams, urlGetParams, searchParam);
+      let urlParam = '';
+      Object.keys(urlParamsObject).forEach(function (key, index) {
+        let surfix = "&";
+        if (index === 0) {
+          surfix = "?"
+        }
+        urlParam += surfix + key + "=" + urlParamsObject[key];
+      });
+
+      return apiUrl + urlParam;
+    },
+
+    getContactsFromApi: function (searchParam = {}) {
       fetch(
-        url
+        methods.data.getApiUrl(searchParam)
       )
         .then(function (response) {
           if (response.ok && response.status === 200) {
@@ -129,7 +148,7 @@ modules["contacts"] = (function () {
     },
 
     serialize: function (formElements) {
-      var postData = Array.prototype.slice
+      let postData = Array.prototype.slice
         .call(formElements)
         .reduce(function (data, item, currentIndex, array) {
           if (item && item.name) {
@@ -569,7 +588,7 @@ id="file" hidden />
       const deleteButton = content.querySelector("button.button-delete");
       const formElm = content.querySelector("form.contact-form");
       editButton.addEventListener("click", methods.contactItem.edit);
-      backButton.addEventListener("click", methods.contactItem.back);
+      backButton.addEventListener("click", methods.contactItem.hide);
       deleteButton.addEventListener("click", methods.data.deleteContact);
 
       formElm.addEventListener("submit", methods.data.saveContact);
@@ -616,16 +635,30 @@ id="file" hidden />
         .querySelector("fieldset")
         .removeAttribute("disabled");
     },
-    back: function (event) {
-      const formElement = event.currentTarget.form;
-      const contactItemWrapper = formElement.parentNode;
-
-      contactItemWrapper.removeChild(formElement);
-      contactItemWrapper.removeAttribute("state");
+    hide: function () {
+      const contactItemWrapper = elements.contactsContainer.querySelector(
+        selectors.contactItemWrapper
+      );
+      const formElement = contactItemWrapper.querySelector(".contact-form");
+      if (formElement) {
+        contactItemWrapper.removeChild(formElement);
+        contactItemWrapper.removeAttribute("state");
+      }
     }
   };
 
   methods.setElements = function () {
+    elements.contactListItemsContainer = elements.contactsContainer.querySelector(
+      selectors.contactListItemsContainer
+    );
+    elements.contactItemContainer = elements.contactsContainer.querySelector(
+      selectors.contactItemContainer
+    );
+
+    elements.contactItemsUnit = elements.contactListItemsContainer.getElementsByClassName(
+      "contact-list-items unit"
+    )[0];
+
     if (elements.contactListItemsContainer) {
       elements.contactListItemsUnit = elements.contactListItemsContainer.querySelector(
         selectors.contactListItemsUnit
@@ -639,9 +672,6 @@ id="file" hidden />
       );
     }
 
-    elements.contactItemContainer = document.querySelector(
-      selectors.contactItemContainer
-    );
     if (elements.contactItemContainer) {
       elements.contactItemUnit = elements.contactItemContainer.querySelector(
         selectors.contactItemUnit
@@ -714,12 +744,12 @@ id="file" hidden />
           if (buttons[key] !== event.currentTarget) {
             modules["general"].htmlElement.removeAttributeValue(dataElm);
           } else {
-
             modules["general"].htmlElement.addAttributeValue(dataElm);
           }
         })
-        event.currentTarget.class = ""
-        window.history.pushState('', '', event.currentTarget.search)
+        methods.contactItem.hide();
+        let url = event.currentTarget.search || event.currentTarget;
+        window.history.pushState('', '', url)
         methods.data.getContactsFromApi();
       }
     }
@@ -742,31 +772,35 @@ id="file" hidden />
     }
   };
 
+  methods.search = function (event) {
+    event.preventDefault();
+    const searchParam = methods.data.serialize(event.currentTarget.elements);
+    methods.data.getContactsFromApi(searchParam);
+    //    console.log();
+
+  }
+
   methods.init = function (viewport) {
     if (elements.contactsContainer) {
+      methods.setElements();
       window.addEventListener("resize", methods.elementWidth.fixedContainer);
-      const buttonAddContact = elements.contactsContainer.querySelector(
+
+      const buttonAddContact = elements.contactsContainer.querySelectorAll(
         ".button-add"
       );
-      buttonAddContact.addEventListener("click", methods.page.addContact);
+      Object.keys(buttonAddContact).forEach(function (key) {
+        buttonAddContact[key].addEventListener("click", methods.page.addContact);
+      });
 
+      const searchForm = elements.contactsContainer.querySelector(
+        "form[variant='form-search']"
+      );
+      searchForm.addEventListener("submit", methods.search);
       methods.navigation.setEventListner();
 
       // get and show contact list
-      elements.contactListItemsContainer = elements.contactsContainer.querySelector(
-        selectors.contactListItemsContainer
-      );
-      elements.contactItemContainer = elements.contactsContainer.querySelector(
-        selectors.contactItemContainer
-      );
+      methods.data.getContactsFromApi();
 
-      elements.contactItemsUnit = elements.contactListItemsContainer.getElementsByClassName(
-        "contact-list-items unit"
-      )[0];
-
-      if (elements.contactListItemsContainer) {
-        methods.data.getContactsFromApi();
-      }
       return true;
     } else {
       return false;

@@ -111,7 +111,7 @@
                 padding: 0;
                 @include setPropWithRemAndPx(1, (margin-top, padding-bottom));
                 &:focus {
-                  @include setPropWithRemAndPx(11, margin-left);
+                  @include setPropWithRemAndPx(23, margin-left);
                 }
               }
             }

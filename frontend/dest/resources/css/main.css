@@ -2887,88 +2887,129 @@ button {
 
 .navigation.container {
   position: fixed;
-  width: 0;
-  height: 0;
-  background-color: #c9ecf2;
+  width: 100%;
+  height: 100px;
+  background-color: #666666;
   margin: 0;
   left: 0;
-  top: 0;
+  bottom: 0;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 12; }
   @media screen and (min-width: 48rem) {
     .navigation.container {
+      top: 0;
+      bottom: unset;
       height: 100%;
+      background-color: #c9ecf2;
       width: 130px;
-      width: 8.125rem; } }
+      width: 8.125rem;
+      max-width: 130px;
+      max-width: 8.125rem; } }
 
 .navigation.unit {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-  .navigation.unit li a,
-  .navigation.unit li button {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: column wrap;
-            flex-flow: column wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -ms-flex-line-pack: center;
-        align-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    text-align: center;
-    color: #222222;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    font-family: Roboto, Montserrat, Raleway, sans-serif;
-    height: 100px;
-    height: 6.25rem; }
-    .navigation.unit li a .icon,
-    .navigation.unit li button .icon {
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  @media screen and (min-width: 48rem) {
+    .navigation.unit {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; } }
+  .navigation.unit li {
+    width: 130px;
+    width: 8.125rem; }
+    .navigation.unit li.flex-auto {
+      -webkit-box-flex: 1;
+          -ms-flex: auto;
+              flex: auto;
+      max-width: unset; }
+    .navigation.unit li a,
+    .navigation.unit li button {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-flow: column wrap;
+              flex-flow: column wrap;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      text-align: center;
+      color: white;
       -webkit-transition: all 0.3s ease;
       transition: all 0.3s ease;
-      text-align: center;
-      margin-bottom: 10px;
-      margin-bottom: 0.625rem;
-      width: 50px;
-      width: 3.125rem;
-      height: 50px;
-      height: 3.125rem; }
-      .navigation.unit li a .icon svg,
-      .navigation.unit li button .icon svg {
-        width: 100%;
-        height: 100%; }
-        .navigation.unit li a .icon svg path,
-        .navigation.unit li button .icon svg path {
-          fill: #222222; }
-    .navigation.unit li a:hover, .navigation.unit li a:focus,
-    .navigation.unit li button:hover,
-    .navigation.unit li button:focus {
-      font-weight: 700;
-      text-decoration: none; }
-      .navigation.unit li a:hover .icon, .navigation.unit li a:focus .icon,
-      .navigation.unit li button:hover .icon,
-      .navigation.unit li button:focus .icon {
-        -webkit-transform: scale(1.3);
-                transform: scale(1.3); }
-    .navigation.unit li a[variant~="is-active"],
-    .navigation.unit li button[variant~="is-active"] {
-      color: #999999;
-      background-color: #e7f2f4; }
-      .navigation.unit li a[variant~="is-active"] .icon svg path,
-      .navigation.unit li button[variant~="is-active"] .icon svg path {
-        fill: #999999; }
+      font-family: Roboto, Montserrat, Raleway, sans-serif;
+      width: 130px;
+      width: 8.125rem;
+      max-width: 130px;
+      max-width: 8.125rem;
+      border: 0;
+      background: transparent;
+      height: 100px;
+      height: 6.25rem; }
+      .navigation.unit li a .icon,
+      .navigation.unit li button .icon {
+        height: 40px;
+        height: 2.5rem;
+        width: 40px;
+        width: 2.5rem;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-bottom: 1.25rem; }
+        .navigation.unit li a .icon svg,
+        .navigation.unit li button .icon svg {
+          width: 100%;
+          height: 100%; }
+          .navigation.unit li a .icon svg path,
+          .navigation.unit li button .icon svg path {
+            fill: white; }
+      @media screen and (min-width: 48rem) {
+        .navigation.unit li a,
+        .navigation.unit li button {
+          color: #666666; }
+          .navigation.unit li a .icon svg path,
+          .navigation.unit li button .icon svg path {
+            fill: #666666; } }
+      .navigation.unit li a span,
+      .navigation.unit li button span {
+        font-size: 16px;
+        font-size: 1rem; }
+      .navigation.unit li a:hover, .navigation.unit li a:focus,
+      .navigation.unit li button:hover,
+      .navigation.unit li button:focus {
+        font-weight: 700;
+        text-decoration: none; }
+        .navigation.unit li a:hover .icon, .navigation.unit li a:focus .icon,
+        .navigation.unit li button:hover .icon,
+        .navigation.unit li button:focus .icon {
+          -webkit-transform: scale(1.3);
+                  transform: scale(1.3); }
+      @media screen and (min-width: 48rem) {
+        .navigation.unit li a[variant~="is-active"],
+        .navigation.unit li button[variant~="is-active"] {
+          color: #999999;
+          background-color: #e7f2f4; }
+          .navigation.unit li a[variant~="is-active"] .icon svg path,
+          .navigation.unit li button[variant~="is-active"] .icon svg path {
+            fill: #999999; } }
 
 .contact-button[variant~="contact-button"].container {
   position: fixed;
@@ -3070,8 +3111,6 @@ button {
         text-align: center;
         width: 40px;
         height: 40px;
-        margin-bottom: 10px;
-        margin-bottom: 0.625rem;
         margin-bottom: 20px;
         margin-bottom: 1.25rem;
         width: 40px;
@@ -3366,8 +3405,8 @@ button {
         padding-bottom: 1px;
         padding-bottom: 0.0625rem; }
         .contact-item.container[variant~="contact-item-header"] [variant~="contact-item-name"] .input.container[variant~="name-inputfield"] input:focus {
-          margin-left: 11px;
-          margin-left: 0.6875rem; }
+          margin-left: 23px;
+          margin-left: 1.4375rem; }
 
 .contact-item.container[variant~="contact-item-body-container"] {
   display: -webkit-box;
@@ -3693,8 +3732,8 @@ input[type="file"]:focus ~ label .image {
       opacity: 1;
       text-align: left; }
     .input[variant~="contact-inputfield"] .input:focus {
-      margin-left: 13px;
-      margin-left: 0.8125rem;
+      margin-left: 25px;
+      margin-left: 1.5625rem;
       font-weight: 700;
       -webkit-transform: scale(1.2);
               transform: scale(1.2);

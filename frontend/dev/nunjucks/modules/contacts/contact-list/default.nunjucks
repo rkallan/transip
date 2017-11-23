@@ -1,6 +1,6 @@
 <div class="contact-list-items container" variant="contact-list-items">
   <div class="contact-list-search container" variant="contact-list-search">
-    <form class="contact-list-search unit" role="search">
+    <form class="contact-list-search unit" role="search" variant="form-search">
         <div class="custom-input container">
           <div class="custom-input unit" variant="input-search">
             <input class="input search" type="search" id="mySearch" name="q"

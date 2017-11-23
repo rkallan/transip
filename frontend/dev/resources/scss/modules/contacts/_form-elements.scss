@@ -86,7 +86,7 @@
         text-align: left;
       }
       &:focus {
-        @include setPropWithRemAndPx(13, margin-left);
+        @include setPropWithRemAndPx(25, margin-left);
         font-weight: 700;
         transform: scale(1.2);
         width: calc(100%/1.2);

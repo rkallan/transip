@@ -1,6 +1,6 @@
 var modules = (window.modules = window.modules || {});
 
-modules["general"] = (function() {
+modules["general"] = (function () {
   "use strict";
 
   var elements, methods, accessibility;
@@ -9,19 +9,19 @@ modules["general"] = (function() {
   methods = {};
 
   methods.htmlElement = {
-    getAttribute: function(data) {
+    getAttribute: function (data) {
       if (data.element) {
         return data.element.getAttribute(data.attributeKey) || false;
       }
     },
-    hasAttributeValue: function(data, attributeValue) {
+    hasAttributeValue: function (data, attributeValue) {
       if (!attributeValue) {
         attributeValue = methods.htmlElement.getAttribute(data);
       }
       var regex = new RegExp(data.attributeValue, "gi");
       return regex.test(attributeValue);
     },
-    addAttributeValue: function(data) {
+    addAttributeValue: function (data) {
       var attributeValue = methods.htmlElement.getAttribute(data);
 
       if (!methods.htmlElement.hasAttributeValue(data, attributeValue)) {
@@ -34,7 +34,7 @@ modules["general"] = (function() {
       }
       return true;
     },
-    removeAttributeValue: function(data) {
+    removeAttributeValue: function (data) {
       var attributeValue = methods.htmlElement.getAttribute(data);
       var hasAttributeValue = methods.htmlElement.hasAttributeValue(
         data,
@@ -53,7 +53,7 @@ modules["general"] = (function() {
       }
       return valueRemoved;
     },
-    toggleAttributeValue: function(data) {
+    toggleAttributeValue: function (data) {
       data.attributeValue = data.removeAttributeValue;
       var valueToggled = false;
       var removeAttributeValue = methods.htmlElement.removeAttributeValue(data);
@@ -65,10 +65,10 @@ modules["general"] = (function() {
       }
       return valueToggled;
     },
-    hasClass: function(element, value) {
+    hasClass: function (element, value) {
       return (" " + element.className + " ").indexOf(" " + value + " ") > -1;
     },
-    getClosestParentNode: function(data) {
+    getClosestParentNode: function (data) {
       var element = data.currentElement;
 
       while (
@@ -82,12 +82,12 @@ modules["general"] = (function() {
 
       return element;
     },
-    createElement: function(data) {
+    createElement: function (data) {
       const element = document.createElement(data.nodeName || "div");
       element.className = data.className || null;
 
       if (data && data.addAttributes) {
-        data.addAttributes.forEach(function(attributeData) {
+        data.addAttributes.forEach(function (attributeData) {
           attributeData.element = element;
           methods.htmlElement.addAttributeValue(attributeData);
         });
@@ -97,21 +97,70 @@ modules["general"] = (function() {
     },
   };
 
+  methods.getUrlParams = function (url = window.location.search) {
+    // get query string from url as default set from window location
+    let queryString = url.slice(1);
+    let obj = {};
+
+    if (queryString) {
+      // stuff after # is not part of query string, so get rid of it
+      queryString = queryString.split('#')[0];
+
+      // split our query string into its component parts
+      let getParamsKeyValue = queryString.split('&');
+      getParamsKeyValue.forEach(function (paramKeyValue, index, array) {
+        let paramArray = paramKeyValue.split("=");
+        let keySplitForArrayParam = paramArray[0].split("[");
+        let key = keySplitForArrayParam[0];
+        let value = paramArray[1] || true;
+        // check for param arraykey
+        let paramArrayKey = keySplitForArrayParam[1];
+        if (paramArrayKey) {
+          paramArrayKey = paramArrayKey.slice(0, -1);
+        }
+
+        if (paramArrayKey === undefined) {
+          obj[key] = value;
+        } else {
+          if (!obj[key]) {
+            obj[key] = [];
+          }
+
+          if (paramArrayKey.length === 0) {
+            obj[key].push(value)
+          } else {
+            if (obj[key][paramArrayKey]) {
+              if (typeof obj[key][paramArrayKey] === "string") {
+                let objValue = obj[key][paramArrayKey];
+                obj[key][paramArrayKey] = [];
+                obj[key][paramArrayKey].push(objValue)
+              }
+              obj[key][paramArrayKey].push(value)
+            } else {
+              obj[key][paramArrayKey] = value;
+            }
+          }
+        }
+      });
+    }
+    return obj;
+  };
+
   methods.accessibility = {
-    set: function(data) {
+    set: function (data) {
       methods.htmlElement.toggleAttributeValue(data);
       methods.accessibility.setLocalStore(data.element);
     },
-    getFromElement: function(data) {
+    getFromElement: function (data) {
       return methods.htmlElement.getAttribute(data);
     },
-    setLocalStore: function(data) {
+    setLocalStore: function (data) {
       return (accessibility = methods.accessibility.getFromElement(data));
     },
-    getLocalStore: function() {
+    getLocalStore: function () {
       return accessibility;
     },
-    dataMouse: function() {
+    dataMouse: function () {
       var data = {
         element: elements.body,
         attributeKey: "accessibility",
@@ -120,7 +169,7 @@ modules["general"] = (function() {
       };
       return data;
     },
-    dataKeyboard: function() {
+    dataKeyboard: function () {
       var data = {
         element: elements.body,
         attributeKey: "accessibility",
@@ -133,27 +182,27 @@ modules["general"] = (function() {
   };
 
   methods.eventListener = {
-    mouse: function() {
+    mouse: function () {
       addEventListener("keydown", methods.eventListener.setKeyboard);
       removeEventListener("mousedown", methods.eventListener.setMouse);
     },
-    keyboard: function() {
+    keyboard: function () {
       addEventListener("mousedown", methods.eventListener.setMouse);
       removeEventListener("mousedown", methods.eventListener.setKeyboard);
     },
-    setMouse: function() {
+    setMouse: function () {
       var data = methods.accessibility.dataMouse();
       methods.accessibility.set(data);
       methods.eventListener.mouse();
     },
-    setKeyboard: function() {
+    setKeyboard: function () {
       var data = methods.accessibility.dataKeyboard();
       methods.accessibility.set(data);
       methods.eventListener.keyboard();
     },
   };
 
-  methods.init = function(viewport) {
+  methods.init = function (viewport) {
     elements.body = document.querySelector("body");
     var data = {
       element: elements.body,
@@ -171,15 +220,15 @@ modules["general"] = (function() {
     }
   };
 
-  methods.render = function(viewport) {
+  methods.render = function (viewport) {
     return true;
   };
 
-  methods.mount = function(viewport) {
+  methods.mount = function (viewport) {
     return true;
   };
 
-  methods.unmount = function() {};
+  methods.unmount = function () { };
 
   return {
     mount: methods.mount,
@@ -187,5 +236,6 @@ modules["general"] = (function() {
     unmount: methods.unmount,
     render: methods.render,
     htmlElement: methods.htmlElement,
+    getUrlParams: methods.getUrlParams
   };
 })();
